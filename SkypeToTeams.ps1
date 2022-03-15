@@ -26,7 +26,8 @@ if (!(Test-Path C:\SkypeToTeams)) {New-Item -Type Directory 'C:\SkypeToTeams'}
 Write-Host -ForegroundColor Green "Creating .bat file"
 $BatFile = "@echo off
 set origNumber=%1
-set number=%origNumber:?call=%
+set step=%origNumber:+0=%
+set number=%step:?call=%
 `"$env:USERPROFILE\AppData\Local\Microsoft\Teams\current\Teams.exe`" tel:%number%"
 $BatFile | Out-file -Encoding "ASCII" C:\SkypeToTeams\SkypeToTeams.bat
 
